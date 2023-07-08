@@ -23,6 +23,10 @@ int _printf(const char *format, ...) {
         case '%': {
           count += printf("%%");
           break;
+	}
+	case 'p': {
+	_printf("%p\n", NULL);
+	break;
         }
         default: {
           break;
