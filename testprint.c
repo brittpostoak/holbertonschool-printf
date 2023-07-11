@@ -1,14 +1,16 @@
 #include <stdio.h>
 #include <stdarg.h>
+
 int _printf(const char *format, ...)
 {
     int count = 0;
     va_list args;
-  if (format == NULL)
+    if (format == NULL)
     {
-            return (-1);
+	    return (-1);
     }
     va_start(args, format);
+
     while (*format)
     {
         if (*format == '%')
@@ -83,6 +85,7 @@ int _printf(const char *format, ...)
         }
         format++;
     }
+
     va_end(args);
     return count;
 }
