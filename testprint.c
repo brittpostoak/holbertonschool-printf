@@ -1,34 +1,40 @@
 #include <stdio.h>
 #include <stdarg.h>
-
 int _printf(const char *format, ...)
 {
     int count = 0;
     va_list args;
     if (format == NULL)
     {
-	    return (-1);
+        return (-1);
     }
     va_start(args, format);
-
     while (*format)
     {
-        if (*format == '%') {
-      format++;
-      switch (*format) {
-        case 'c': {
-          char c = va_arg(args, int);
-          count += printf("%c", c);
-          break;
-        }
-        case '%': {
-          count += printf("%%");
-          break;
-		}
+        if (*format == '%')
+        {
+            format++;
+            switch (*format)
+            {
+                case 'c':
+                {
+                    char c = va_arg(args, int);
+                    count += putchar(c);
+                    break;
+                }
                 case 's':
                 {
                     char *s = va_arg(args, char *);
-                    count += printf("%s", s);
+                    while (*s)
+                    {
+                        count += putchar(*s);
+                        s++;
+                    }
+                    break;
+                }
+                case '%':
+                {
+                    count += putchar('%');
                     break;
                 }
                 case 'd':
@@ -70,18 +76,18 @@ int _printf(const char *format, ...)
                 }
                 default:
                 {
-                    count += printf("%%%c", *format);
+                    count += putchar('%');
+                    count += putchar(*format);
                     break;
                 }
             }
         }
         else
         {
-            count += printf("%c", *format);
+            count += putchar(*format);
         }
         format++;
     }
-
     va_end(args);
     return count;
 }
