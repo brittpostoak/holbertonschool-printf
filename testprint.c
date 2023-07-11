@@ -4,8 +4,6 @@
 int _printf(const char *format, ...) {
   int count = 0;
   va_list args;
-  if (format == NULL)
-	  return(-1);
 
   va_start(args, format);
 
@@ -47,4 +45,9 @@ int _printf(const char *format, ...) {
 
   va_end(args);
   return count;
+}
+
+int main() {
+  _printf(NULL);
+  return 0;
 }
