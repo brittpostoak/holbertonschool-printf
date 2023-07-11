@@ -24,15 +24,15 @@ int _printf(const char *format, ...)
                     count += printf("%c", c);
                     break;
                 }
+		 case '%':
+                {
+                    count += printf("%%");
+                    break;
+		}
                 case 's':
                 {
                     char *s = va_arg(args, char *);
                     count += printf("%s", s);
-                    break;
-                }
-                case '%':
-                {
-                    count += printf("%%");
                     break;
                 }
                 case 'd':
@@ -89,4 +89,3 @@ int _printf(const char *format, ...)
     va_end(args);
     return count;
 }
-
