@@ -30,7 +30,7 @@ int _printf(const char *format, ...)
                 }
                 case '%':
                 {
-                    count += printf("%%");
+                    count += printf("%c", *format);
                     break;
                 }
                 case 'd':
