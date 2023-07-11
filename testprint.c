@@ -7,10 +7,6 @@ int _printf(const char *format, ...) {
 
   va_start(args, format);
 
-  str = va_arg(values, char *);
-	if (str == NULL)
-		str = "(null)";
-
   while (*format) {
     if (*format == '%') {
       format++;
