@@ -4,9 +4,9 @@ int _printf(const char *format, ...)
 {
     int count = 0;
     va_list args;
-    if (format == NULL)
+  if (format == NULL)
     {
-        return (-1);
+            return (-1);
     }
     va_start(args, format);
     while (*format)
@@ -19,22 +19,18 @@ int _printf(const char *format, ...)
                 case 'c':
                 {
                     char c = va_arg(args, int);
-                    count += putchar(c);
+                    count += printf("%c", c);
                     break;
                 }
                 case 's':
                 {
                     char *s = va_arg(args, char *);
-                    while (*s)
-                    {
-                        count += putchar(*s);
-                        s++;
-                    }
+                    count += printf("%s", s);
                     break;
                 }
                 case '%':
                 {
-                    count += putchar('%');
+                    count += printf("%%");
                     break;
                 }
                 case 'd':
@@ -76,15 +72,14 @@ int _printf(const char *format, ...)
                 }
                 default:
                 {
-                    count += putchar('%');
-                    count += putchar(*format);
+                    count += printf("%%%c", *format);
                     break;
                 }
             }
         }
         else
         {
-            count += putchar(*format);
+            count += printf("%c", *format);
         }
         format++;
     }
