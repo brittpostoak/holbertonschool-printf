@@ -13,22 +13,17 @@ int _printf(const char *format, ...)
 
     while (*format)
     {
-        if (*format == '%')
-        {
-            format++;
-            switch (*format)
-            {
-                case 'c':
-                {
-                    char c = va_arg(args, int);
-                    count += printf("%c", c);
-                    break;
-                }
-		 case '%':
-                {
-			char % = va_args(args, int);
-                    count += printf("%%");
-                    break;
+        if (*format == '%') {
+      format++;
+      switch (*format) {
+        case 'c': {
+          char c = va_arg(args, int);
+          count += printf("%c", c);
+          break;
+        }
+        case '%': {
+          count += printf("%%");
+          break;
 		}
                 case 's':
                 {
