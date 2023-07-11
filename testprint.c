@@ -26,6 +26,7 @@ int _printf(const char *format, ...)
                 }
 		 case '%':
                 {
+			char % = va_args(args, int);
                     count += printf("%%");
                     break;
 		}
