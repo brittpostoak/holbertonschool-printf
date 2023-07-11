@@ -74,3 +74,15 @@ int _printf(const char *format, ...)
                 {
                     count += printf("%%%c", *format);
                     break;
+                }
+            }
+        }
+        else
+        {
+            count += printf("%c", *format);
+        }
+        format++;
+    }
+    va_end(args);
+    return count;
+}
