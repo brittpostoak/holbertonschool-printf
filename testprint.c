@@ -7,17 +7,17 @@
  **/
 int _printf(const char *format, ...)
 {
-    int count = 0;
-    va_list args;
-  if (format == NULL)
-    {
-            return (-1);
-    }
-    va_start(args, format);
-    while (*format)
-    {
-        if (*format == '%')
-        {
+int count = 0;
+va_list args;
+if (format == NULL)
+	{
+	return (-1);
+	}
+	va_start(args, format);
+	while (*format)
+	{
+		if (*format == '%')
+	{
             format++;
             switch (*format)
             {
