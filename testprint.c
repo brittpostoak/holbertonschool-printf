@@ -16,11 +16,11 @@ if (format == NULL)
 	va_start(args, format);
 	while (*format)
 	{
-		if (*format == '%')
+	if (*format == '%')
 	{
-            format++;
-            switch (*format)
-            {
+		format++;
+		switch (*format)
+		{
                 case 'c':
                 {
                     char c = va_arg(args, int);
